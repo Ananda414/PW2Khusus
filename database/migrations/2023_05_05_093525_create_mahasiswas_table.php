@@ -3,7 +3,6 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use League\CommonMark\Reference\Reference;
 
 return new class extends Migration
 {
@@ -12,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('mahasiswas', function (Blueprint $table) {
+        Schema::create('mahasiswa', function (Blueprint $table) {
             $table->uuid('id');
             $table->primary('id');
             $table->string('npm');
@@ -20,6 +19,7 @@ return new class extends Migration
             $table->string('tanggal_lahir');
             $table->string('kota_lahir');
             $table->char('foto');
+            $table->uuid('prodi_id');
             $table->foreign('prodi_id')->references('id')->on('prodi')->cascadeOnDelete()->cascadeOnDelete();
             $table->timestamps();
         });

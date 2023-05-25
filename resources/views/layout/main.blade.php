@@ -5,6 +5,7 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Spica Admin</title>
     <!-- base:css -->
     <link rel="stylesheet" href="{{ asset('vendors/mdi/css/materialdesignicons.min.css') }}">
@@ -69,7 +70,6 @@
                     <a class="nav-link" href="{{ url('fakultas') }}">
                         <i class="mdi mdi-view-quilt menu-icon"></i>
                         <span class="menu-title">Fakultas</span>
-                        {{-- <div class="badge badge-info badge-pill">2</div> --}}
                     </a>
                 </li>
                 <li class="nav-item">
@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ url('prodi') }}">
+                    <a class="nav-link" href="{{ url('mahasiswa') }}">
                         <i class="mdi mdi-view-quilt menu-icon"></i>
                         <span class="menu-title">Mahasiswa</span>
                         {{-- <div class="badge badge-info badge-pill">2</div> --}}
@@ -372,25 +372,6 @@
         <!-- page-body-wrapper ends -->
     </div>
     <!-- container-scroller -->
-
-    <!-- base:js -->
-    <script src="vendors/js/vendor.bundle.base.js"></script>
-    <!-- endinject -->
-    <!-- Plugin js for this page-->
-    <script src="vendors/chart.js/Chart.min.js"></script>
-    <script src="js/jquery.cookie.js" type="text/javascript"></script>
-    <!-- End plugin js for this page-->
-    <!-- inject:js -->
-    <script src="js/off-canvas.js"></script>
-    <script src="js/hoverable-collapse.js"></script>
-    <script src="js/template.js"></script>
-    <!-- endinject -->
-    <!-- plugin js for this page -->
-    <script src="js/jquery.cookie.js" type="text/javascript"></script>
-    <!-- End plugin js for this page -->
-    <!-- Custom js for this page-->
-    <script src="js/dashboard.js"></script>
-    <!-- End custom js for this page-->
 </body>
 
 </html>

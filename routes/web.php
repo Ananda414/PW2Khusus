@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\ProdiController;
-
+use App\Http\Controllers\MahasiswaController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,8 +36,10 @@ use App\Http\Controllers\ProdiController;
 //     return view('fakultas.index') -> with('dataFakultas', ['fikr', 'feb']);
 // });
 
-Route::get('Prodi', [ProdiController::class, 'index']) ->name("prodi");
 Route::resource('fakultas', FakultasController::class);
 
-Route::get('Prodi', [ProdiController::class, 'index']) ->name("prodi");
 Route::resource('prodi', ProdiController::class);
+
+Route::resource('mahasiswa', MahasiswaController::class);
+
+Route::post('mhs-multi=delete', [MahasiswaController::class, 'multiDelete'])->name('mhs-multi-delete');
