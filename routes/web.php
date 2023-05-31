@@ -1,9 +1,11 @@
 <?php
 
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\FakultasController;
-use App\Http\Controllers\ProdiController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\ProdiController;
+use App\Http\Controllers\ProfileController;
+use Illuminate\Support\Facades\Route;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,31 +17,24 @@ use App\Http\Controllers\MahasiswaController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 
-// Route::get('/', function () {
-//     return "Halaman Profil";
-// });
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth', 'verified'])->name('dashboard');
 
-// Route::get('/dosen', function() {
-//     return view('dosen');
-// });
-
-// Route::get('/dosen/index', function() {
-//     return view('dosen.index');
-// });
-
-// Route::get('/fakultas', function() {
-//     // return view('fakultas.index', ['fikr' => 'fakultas ilmu komputer dan rekayasa']);
-//     return view('fakultas.index') -> with('dataFakultas', ['fikr', 'feb']);
-// });
+Route::middleware('auth')->group(function () {
+    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
 
 Route::resource('fakultas', FakultasController::class);
-
 Route::resource('prodi', ProdiController::class);
-
 Route::resource('mahasiswa', MahasiswaController::class);
 
-Route::post('mhs-multi=delete', [MahasiswaController::class, 'multiDelete'])->name('mhs-multi-delete');
+Route::post('mhs-multi-delete', [MahasiswaController::class, 'multiDelete']) -> name('mhs-multi-delete');
+
+require __DIR__.'/auth.php';

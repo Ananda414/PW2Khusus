@@ -21,11 +21,11 @@
                       <form class="col-lg-6 rounded border-info border d-flex" method="GET">
                         <input type="text" name="search" class="form-control" placeholder="">
                       </form> 
-                  </div>
+                    </div>
                     <a href="{{ route('mahasiswa.create') }}" class="btn btn-primary">Tambah</a>
 
                     @if (count($mahasiswas) != 0)
-                      <button class="btn btn-danger" id="multi-delete" data-route="{{ route('mhs-multi-delete')
+                      <button class="btn btn-danger d-flex justify-content-end flex-column" id="multi-delete" data-route="{{ route('mhs-multi-delete')
                       }}">Delete All Selected</button>
                     @endif
 
